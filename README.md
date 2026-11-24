@@ -7,6 +7,7 @@ This MATLAB example generates a 24-frame dynamic PET acquisition from the 2-D Zu
 ## Repository layout
 
 - [`run_zubal_affinekem.m`](run_zubal_affinekem.m) runs the full example and writes the results.
+- [`demo/demo_zubal_affinekem.m`](demo/demo_zubal_affinekem.m) runs and displays a shorter reconstruction of frame 12.
 - [`functions/simulate_zubal_pet.m`](functions/simulate_zubal_pet.m) generates the dynamic ground truth and the noisy PET projections.
 - [`functions/build_affinekem_priors.m`](functions/build_affinekem_priors.m) builds the sparse kernel and composite reference images.
 - [`functions/affinekem_reconstruct.m`](functions/affinekem_reconstruct.m) reconstructs one frame.
@@ -27,6 +28,14 @@ Open MATLAB in this directory and set the paths to the two installations.
 ```matlab
 setenv('FESSLER_IRT_ROOT', '/path/to/irt');       % Contains setup.m
 setenv('KER_ROOT', '/path/to/KER_v0.2');        % Contains utils/
+run('demo/demo_zubal_affinekem.m');
+```
+
+The demo uses 20 composite image iterations and 30 AffineKEM iterations. It displays the ground truth, composite reference, and reconstruction on a shared intensity scale, and writes the MAT and CSV files under `results/demo/`.
+
+For the full three-frame experiment, run:
+
+```matlab
 results = run_zubal_affinekem();
 ```
 
